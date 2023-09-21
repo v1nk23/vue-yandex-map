@@ -220,9 +220,10 @@ export function ymapLoader(settings = {}) {
       coordorder = 'latlong',
       debug = false,
       enterprise = false,
+      suggest_apikey = '',
     } = settings;
     const mode = debug ? 'debug' : 'release';
-    const settingsPart = `lang=${lang}${apiKey && `&apikey=${apiKey}`}&mode=${mode}&coordorder=${coordorder}`;
+    const settingsPart = `lang=${lang}${apiKey && `&apikey=${apiKey}`}&mode=${mode}&coordorder=${coordorder}${suggest_apikey && `&suggest_apikey=${suggest_apikey}`}`;
     const link = `https://${enterprise ? 'enterprise.' : ''}api-maps.yandex.ru/${version}/?${settingsPart}`;
     yandexMapScript.setAttribute('src', link);
     yandexMapScript.setAttribute('async', '');
